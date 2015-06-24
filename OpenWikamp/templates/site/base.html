@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Current Site - OpenWikamp</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foundation-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+
+    <script src="{% static 'js/vendor/modernizr.js' %}"></script>
+</head>
+<body>
+    <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="/">OpenWikamp</a></h1>
+            </li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a href="{% url 'OpenWikamp.views.subject_list' %}"><i class="fi-page-multiple"></i>&nbsp;&nbsp;Przedmioty</a></li>
+            </ul>
+            <ul class="right">
+                <li class="active"><a href="#">Active</a></li>
+                <li class="has-dropdown">
+                    <a href="#">User</a>
+                    <ul class="dropdown">
+                        <li><a href="#">First</a></li>
+                        <li class="active"><a href="#">Second</a></li>
+                        <li><a href="#">Third</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </nav>
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'js/foundation.min.js' %}"></script>
+</body>
+</html>

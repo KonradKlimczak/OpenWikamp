@@ -1,0 +1,14 @@
+{% extends 'site/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Lista przedmiotów</h1>
+        </div>
+        {% for subject in subjects %}
+            <div class="small-12 columns text-justify panel">
+	            <h4><a href="{% url 'OpenWikamp.views.subject_details' pk=subject.pk %}"><i class="fi-page"></i>  {{ subject.title }}</a></h4>
+                <p>Prowadzący: {{ subject.head_teacher }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

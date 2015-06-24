@@ -1,0 +1,22 @@
+{% extends 'site/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns panel">
+            <h1>{{ subject.title }}</h1>
+            <h4>{{ subject.head_teacher }}</h4>
+            <p>{{ subject.description }}</p>
+        </div>
+        {% for schedule in subject.schedules %}
+            <div class="small-12 columns text-justify panel">
+	            <h2>Konsultacje</h2>
+                <p>{{ schedule.teacher }} | {{ schedule.classroom }} || {{ schedule.from_time }}</p>
+            </div>
+        {% endfor %}
+        {% for lesson in subject.lessons %}
+            <div class="small-12 columns text-justify panel">
+	            <h3>{{ lesson.title }}</h3>
+                <p>{{ lesson.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
