@@ -16,6 +16,18 @@
             <div class="small-12 columns text-justify panel">
 	            <h3>{{ lesson.title }}</h3>
                 <p>{{ lesson.description }}</p>
+                {% for activity in lesson.activitys %}
+                    <div class="small-12 columns text-justify panel">
+                        <h3>{{ activity.title }}</h3>
+                        <p>{{ activity.description }}</p>
+                        {% for activityfile in activity.activityfile %}
+                            <div class="small-12 columns text-justify">
+                                <h6><a href="#"><i class="fi-page"></i>{{ activityfile.file_name }}</a></h6>
+{#                                <p>{{ activityfile.file }}</p>#}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
         {% endfor %}
     </div>

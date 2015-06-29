@@ -11,6 +11,10 @@ def subject_list(request):
 
 def subject_details(request, pk):
     subject = get_object_or_404(Subject, pk=pk)
-    subject.lessons = Lesson.objects.filter(subject=subject.id)
     subject.schedules = Schedule.objects.filter(subject=subject.id)
+    subject.lessons = Lesson.objects.filter(subject=subject.id)
+    for subject.lesson in subject.lessons:
+        subject.lesson.activitys = Activity.objects.filter(lesson=subject.lesson.id)
+        for subject.lesson.activity in subject.lesson.activitys:
+            subject.lesson.activity.activityfile = ActivityFile.objects.filter(activity=subject.lesson.activity.id)
     return render(request, 'site/subject-details.html', {'subject' : subject})

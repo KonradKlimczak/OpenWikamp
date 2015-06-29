@@ -66,3 +66,12 @@ class ActivityFile(models.Model):
     file_name = models.CharField(max_length=200)
     file = models.FileField()
 
+def publish_activity_file(self):
+    self.save()
+
+def delete_activity_file(self):
+    self.delete()
+
+# class ActivityTask(models.Model):
+#     activity = models.ForeignKey('Activity')
+#     title
