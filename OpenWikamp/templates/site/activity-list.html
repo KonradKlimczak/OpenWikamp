@@ -1,0 +1,35 @@
+{% extends 'site/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Zarządzanie aktywnościami</h1>
+            <a href="{% url 'OpenWikamp.views.activity_add' pk=activitys.0.pk %}" class="button tiny radius">Dodaj aktywność</a>
+        </div>
+            <div class="small-12 columns text-justify">
+{#	            <h4><a href="{% url 'OpenWikamp.views.subject_details' pk=subject.pk %}"><i class="fi-page"></i>  {{ subject.title }}</a></h4>#}
+                <table class="small-12">
+                    <thead>
+                        <tr>
+                            <td>Nazwa</td>
+                            <td>Typ</td>
+                            <td>Kolejność</td>
+                            <td>Akcje</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for activity in activitys %}
+                        <tr>
+                            <td>{{ activity.title }}</td>
+                            <td>Typ</td>
+                            <td>Kolejność</td>
+                            <td>
+                                <a href="#"><i class="fi-widget"></i></a>
+                                <a href="#"><i class="fi-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+{% endblock %}

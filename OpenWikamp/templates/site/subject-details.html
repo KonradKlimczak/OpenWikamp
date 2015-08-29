@@ -5,29 +5,26 @@
             <h1>{{ subject.title }}</h1>
             <h4>{{ subject.head_teacher }}</h4>
             <p>{{ subject.description }}</p>
+            <a href="{% url 'OpenWikamp.views.subject_edit' pk=subject.pk %}" class="button tiny radius">Edytuj przedmiot</a>
         </div>
-        {% for schedule in subject.schedules %}
-            <div class="small-12 columns text-justify panel">
-	            <h2>Konsultacje</h2>
-                <p>{{ schedule.teacher }} | {{ schedule.classroom }} || {{ schedule.from_time }}</p>
-            </div>
-        {% endfor %}
+        <div class="small-12 columns text-justify panel">
+	        <h2>Konsultacje</h2>
+                {% for schedule in subject.schedules %}
+                    <p>{{ schedule.teacher }} | {{ schedule.classroom }} || {{ schedule.from_time }}</p>
+                {% endfor %}
+            <a href="#" class="button tiny radius">Edytuj plan</a>
+        </div>
         {% for lesson in subject.lessons %}
             <div class="small-12 columns text-justify panel">
 	            <h3>{{ lesson.title }}</h3>
                 <p>{{ lesson.description }}</p>
+                <a href="#" class="button tiny radius">Edytuj lekcję</a>
                 {% for activity in lesson.activitys %}
-                    <div class="small-12 columns text-justify panel">
-                        <h3>{{ activity.title }}</h3>
-                        <p>{{ activity.description }}</p>
-                        {% for activityfile in activity.activityfile %}
-                            <div class="small-12 columns text-justify">
-                                <h6><a href="#"><i class="fi-page"></i>{{ activityfile.file_name }}</a></h6>
-{#                                <p>{{ activityfile.file }}</p>#}
-                            </div>
-                        {% endfor %}
+                    <div class="small-12 columns text-justify">
+                        <h6><a href="{% url 'OpenWikamp.views.activity_file' pk=subject.pk acid=activity.pk %}"><i class="fi-page"></i>{{ activity.title }}</a></h6>
                     </div>
                 {% endfor %}
+                <a href="{% url 'OpenWikamp.views.activity_list' pk=lesson.pk %}" class="button tiny radius">Edytuj aktywności</a>
             </div>
         {% endfor %}
     </div>

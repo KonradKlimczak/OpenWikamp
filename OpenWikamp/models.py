@@ -49,21 +49,22 @@ def publish_lesson(self):
 
 def delete_lesson(self):
     self.delete()
-
-class Activity(models.Model):
-    lesson = models.ForeignKey('Lesson')
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-
-def publish_activity(self):
-    self.save()
-
-def delete_activity(self):
-    self.delete()
+#
+# class Activity(models.Model):
+#     lesson = models.ForeignKey('Lesson')
+#     title = models.CharField(max_length=200)
+#     description = models.TextField()
+#py
+# def publish_activity(self):
+#     self.save()
+#
+# def delete_activity(self):
+#     self.delete()
 
 class ActivityFile(models.Model):
-    activity = models.ForeignKey('Activity')
-    file_name = models.CharField(max_length=200)
+    activity = models.ForeignKey('Lesson')
+    title = models.CharField(max_length=200)
+    expired = models.DateTimeField()
     file = models.FileField()
 
 def publish_activity_file(self):

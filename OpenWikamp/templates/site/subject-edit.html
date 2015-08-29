@@ -1,0 +1,14 @@
+{% extends 'site/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Edytuj przedmiot</h1>
+            <form method="post">
+                {% csrf_token %}
+            	{{ form.as_p }}
+                {{ form.error }}
+                <button class="button expand radius small-padding" type="submit"><i class="fi-check"></i>Zapisz</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

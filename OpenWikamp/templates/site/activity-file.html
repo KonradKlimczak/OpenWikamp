@@ -1,0 +1,10 @@
+{% extends 'site/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns">
+            <h2>{{ activity.title }}</h2>
+            <h6>{{ activity.expired }}</h6>
+            <a href="{{ activity.file }}">Aktywność</a>
+        </div>
+    </div>
+{% endblock %}
