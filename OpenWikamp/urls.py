@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 urlpatterns = [
@@ -9,4 +10,8 @@ urlpatterns = [
     url(r'^subject/(?P<pk>[0-9]+)/activity/(?P<acid>[0-9]+)/$', views.activity_file),
     url(r'^lesson/(?P<pk>[0-9]+)/activity/$', views.activity_list),
     url(r'^lesson/(?P<pk>[0-9]+)/activity/add/$', views.activity_add),
+    # api restowe
+    url(r'^post/$', views.PostList.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

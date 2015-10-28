@@ -1,0 +1,15 @@
+{
+  "name": "OpenWikamp Assets",
+  "homepage": "https://github.com/kklimczak/OpenWikamp",
+  "description": "Assets for OpenWikamp platform.",
+  "main": "",
+  "moduleType": [],
+  "authors": [
+    "Konrad Klimczak"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15"
+  }
+}

@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'OpenWikamp',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,6 +108,6 @@ TEMPLATE_DIRS = (
 )
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,	"static"),
+    os.path.join(BASE_DIR,	"static/generated"),
 )
 

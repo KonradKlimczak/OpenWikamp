@@ -1,0 +1,15 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "OpenWikamp Assets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Konrad Klimczak",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "require.js": "^0.3.97"
+  }
+}
