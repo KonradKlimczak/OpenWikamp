@@ -1,9 +1,10 @@
 from django.conf.urls import include, url
 from rest_framework.urlpatterns import format_suffix_patterns
+from OpenWikamp.views import IndexView
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.post_list),
+    # url(r'^$', views.post_list),
     url(r'^subject/$', views.subject_list),
     url(r'^subject/(?P<pk>[0-9]+)/$', views.subject_details),
     url(r'^subject/(?P<pk>[0-9]+)/edit/$', views.subject_edit),
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^lesson/(?P<pk>[0-9]+)/activity/add/$', views.activity_add),
     # api restowe
     url(r'^post/$', views.PostList.as_view()),
+    url(r'^$', IndexView.as_view(), name='index'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

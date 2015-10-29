@@ -28,4 +28,10 @@ gulp.task('copy', ['default'], function () {
     ], {
         cwd: 'bower_components/'
     }).pipe(gulp.dest(generated+'js/'));
+
+    // copy RequireJS
+
+    gulp.src([
+        'node_modules/require.js/build/require.min.js'
+    ]).pipe(gulp.dest(generated+'js/'))
 });

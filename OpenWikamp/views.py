@@ -5,8 +5,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from OpenWikamp.models import Post
 from OpenWikamp.serializers import PostSerializer
+from django.views.generic.base import TemplateView
 from .models import *
 from .forms import *
+
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 class PostList (APIView):
