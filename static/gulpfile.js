@@ -23,7 +23,7 @@ gulp.task('copy', ['default'], function () {
     // copy JS files
 
     gulp.src([
-        'angular/angular.min.js',
+        'angular/angular.js',
         'angular-ui-router/release/angular-ui-router.min.js'
     ], {
         cwd: 'bower_components/'
@@ -32,6 +32,9 @@ gulp.task('copy', ['default'], function () {
     // copy RequireJS
 
     gulp.src([
-        'node_modules/require.js/build/require.min.js'
-    ]).pipe(gulp.dest(generated+'js/'))
+        'requirejs/require.js',
+        'requirejs-domready/domReady.js'
+    ], {
+        cwd: 'bower_components/'
+    }).pipe(gulp.dest(generated+'js/'));
 });

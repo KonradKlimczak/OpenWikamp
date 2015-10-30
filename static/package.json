@@ -9,7 +9,6 @@
   "author": "Konrad Klimczak",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "require.js": "^0.3.97"
+    "gulp": "^3.9.0"
   }
 }
