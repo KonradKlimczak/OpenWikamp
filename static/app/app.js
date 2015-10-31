@@ -3,7 +3,7 @@ define([
     'angular-ui-router',
     './shared/directives/index',
     './shared/services/index',
-    './components/home/index'
+    './components/index'
 ], function (ng) {
     'use strict';
 

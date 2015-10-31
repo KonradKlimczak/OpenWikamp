@@ -1,8 +1,7 @@
 <div ng-controller="homeController">
-    {{ test }}
-    <div class="row">
-        <div class="small-12 columns panel">
-            {{ test }}
-        </div>
-    </div>
+    <ul>
+        <li ng-repeat="post in posts">
+            {{ post.title }}
+        </li>
+    </ul>
 </div>

@@ -1,3 +1,7 @@
-/**
- * Created by konrad on 29.10.15.
- */
+define([
+    '../module.js'
+], function (controllers) {
+    controllers.controller('homeState', function($scope) {
+        $scope.posts = [];
+    })
+});
