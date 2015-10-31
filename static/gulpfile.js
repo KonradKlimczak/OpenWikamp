@@ -1,4 +1,6 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+    clean = require('gulp-clean'),
+    sass = require('gulp-sass');
 
 var generated = 'generated/';
 
@@ -8,6 +10,11 @@ gulp.task('default', function () {
     console.log('|| ver. 1.0.0           ||');
     console.log('|| by kklimczak         ||');
     console.log('||----------------------||');
+});
+
+gulp.task('clean', function() {
+    gulp.src(generated)
+        .pipe(clean());
 });
 
 gulp.task('copy', ['default'], function () {
@@ -27,7 +34,7 @@ gulp.task('copy', ['default'], function () {
         'angular-ui-router/release/angular-ui-router.min.js'
     ], {
         cwd: 'bower_components/'
-    }).pipe(gulp.dest(generated+'js/'));
+    }).pipe(gulp.dest(generated + 'js/'));
 
     // copy RequireJS
 
@@ -36,5 +43,20 @@ gulp.task('copy', ['default'], function () {
         'requirejs-domready/domReady.js'
     ], {
         cwd: 'bower_components/'
-    }).pipe(gulp.dest(generated+'js/'));
+    }).pipe(gulp.dest(generated + 'js/'));
+
+    // copy Foundation
+
+    gulp.src([
+        'foundation/scss/foundation/**/*.*',
+        '!foundation/scss/foundation/_settings.scss'
+    ], {
+        cwd: 'bower_components/'
+    }).pipe(gulp.dest(generated+'scss/vendor/'));
+});
+
+gulp.task('compile-sass', function () {
+    gulp.src(generated+'scss/foundation.scss')
+        .pipe(sass())
+        .pipe(gulp.dest(generated+'css/'));
 });
