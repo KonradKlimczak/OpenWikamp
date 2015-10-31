@@ -3,6 +3,13 @@ define([
 ], function (controllers) {
     controllers.controller('frameController', ["$scope", "$http", "$controller", "$state",
         function ($scope, $http, $controller, $state) {
+            var toggleCanvas = function () {
+                $scope.offcanvas = !$scope.offcanvas;
+            };
+
+            $scope.methods = {
+                toggleCanvas: toggleCanvas
+            };
 
             $scope.init = function () {
                 $controller('frameState', {$scope: $scope});

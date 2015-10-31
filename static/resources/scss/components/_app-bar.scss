@@ -1,0 +1,33 @@
+$app-bar-font-size: rem-calc(13) !default;
+
+// Mixins
+
+@mixin section($float, $padding) {
+  float: $float;
+  padding: rem-calc($padding);
+};
+
+@include exports("app-bar") {
+  .app-bar {
+    background: $primary-color;
+    overflow: hidden;
+    color: $white;
+    font-size: $app-bar-font-size;
+    .logo {
+      @include section(left, 10);
+      background: darken($primary-color, 10%);
+    }
+    .left-section {
+      @include section(left, 10);
+    }
+    .right-section {
+      @include section(right, 10);
+      .user {
+        color: $white;
+      }
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

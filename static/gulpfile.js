@@ -55,7 +55,7 @@ gulp.task('copy', ['default'], function () {
     }).pipe(gulp.dest(generated+'scss/vendor/'));
 });
 
-gulp.task('compile-sass', function () {
+gulp.task('compile-sass', ['copy'], function () {
     gulp.src(generated+'scss/foundation.scss')
         .pipe(sass())
         .pipe(gulp.dest(generated+'css/'));
