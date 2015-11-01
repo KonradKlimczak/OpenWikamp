@@ -1,0 +1,22 @@
+@include exports("c-grid") {
+  @if $include-html-grid-classes {
+    .row, .row .row {
+      &.fluid {
+        width: 100%;
+        max-width: 100%;
+      }
+      &.no-margin {
+        margin: 0;
+      }
+      &.medium-margin-top {
+        margin-top: rem-calc(15);
+      }
+      &.small-margin-top {
+        margin-top: rem-calc(10);
+      }
+      &.very-small-margin-top {
+        margin-top: rem-calc(5);
+      }
+    }
+  }
+}

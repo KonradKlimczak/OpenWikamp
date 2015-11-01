@@ -3,7 +3,7 @@
 // Licensed under MIT Open Source
 @import 'settings';
 // Behold, here are all the Foundation components.
-@import 'vendor/components/grid';
+@import 'vendor/components/grid';             //CC
 @import 'vendor/components/accordion';
 @import 'vendor/components/alert-boxes';
 @import 'vendor/components/block-grid';
@@ -42,4 +42,7 @@
 @import 'vendor/components/visibility';
 
 //Custom
+@import 'components/grid';
+@import "components/offcanvas";
 @import 'components/app-bar';
+

@@ -11,8 +11,15 @@
 </head>
 <body>
 <div id="main" ng-controller="frameController">
-    <div class="off-canvas-wrap" ng-class="{'move-right': offcanvas}" style="height: 100%;">
-        <div class="inner-wrap" style="height: 100%;">
+    <div class="app-bar">
+                    <div class="logo"><b ng-bind="name"></b></div>
+                    <div class="left-section" ng-click="methods.toggleCanvas()">Home</div>
+                    <div class="right-section">
+                        <a href="#" class="user">Current User</a>
+                    </div>
+                </div>
+    <div class="off-canvas-wrap" ng-class="{'move-right': offcanvas}">
+        <div class="inner-wrap">
             <aside class="left-off-canvas-menu">
                 <ul class="off-canvas-list">
                     <li><label>Foundation</label></li>
@@ -21,13 +28,6 @@
                 </ul>
             </aside>
             <section class="main-section">
-                <div class="app-bar">
-                    <div class="logo"><b ng-bind="name"></b></div>
-                    <div class="left-section" ng-click="methods.toggleCanvas()">Home</div>
-                    <div class="right-section">
-                        <a href="#" class="user">Current User</a>
-                    </div>
-                </div>
                 <div ui-view></div>
             </section>
         </div>

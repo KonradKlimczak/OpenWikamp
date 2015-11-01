@@ -1,0 +1,11 @@
+@include exports("c-offcanvas") {
+  @if $include-html-off-canvas-classes {
+    .off-canvas-wrap {
+      height: 100%;
+      margin-bottom: rem-calc(-39);
+    }
+    .inner-wrap {
+      height: 100%;
+    }
+  }
+}
