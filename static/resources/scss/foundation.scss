@@ -37,12 +37,13 @@
 @import 'vendor/components/thumbs';
 @import 'vendor/components/tooltips';
 @import 'vendor/components/top-bar';
-@import 'vendor/components/type';
-@import 'vendor/components/offcanvas';
+@import 'vendor/components/type';             // CC
+@import 'vendor/components/offcanvas';        // CC
 @import 'vendor/components/visibility';
 
 //Custom
 @import 'components/grid';
+@import 'components/type';
 @import "components/offcanvas";
 @import 'components/app-bar';
 

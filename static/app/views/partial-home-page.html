@@ -2,10 +2,10 @@
     <div class="row fluid">
         <div class="small-6 columns">
             <div class="row">
-                <div class="panel">
-                    <div class="small-12 columns" ng-repeat="post in posts">
-                        <h3>{{ post.title }}</h3>
-
+                <div class="small-12 columns">
+                    <h4 class="title-panel">News</h4>
+                    <div ng-repeat="post in posts" class="panel">
+                        <h5><b>{{ post.title }}</b></h5>
                         <p>{{ post.text }}</p>
                     </div>
                 </div>
@@ -13,8 +13,13 @@
         </div>
         <div class="small-6 columns">
             <div class="row">
-                <div class="panel">
-                    <h2>Welcome, User!</h2>
+                <div class="small-12 columns">
+                    <h4 class="title-panel">Welcome User!</h4>
+                    <div class="panel">Your statistic:</div>
+                </div>
+                <div class="small-12 columns">
+                    <h4 class="title-panel">My Activities</h4>
+                    <div class="panel">Activities</div>
                 </div>
             </div>
         </div>

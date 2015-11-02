@@ -6,6 +6,21 @@
     }
     .inner-wrap {
       height: 100%;
+      .left-off-canvas-menu {
+        .image {
+          text-align: center;
+          img {
+            width: rem-calc(100);
+            height: rem-calc(100);
+            margin: rem-calc(10) rem-calc(75);
+            border-radius: $global-radius;
+
+          }
+          span {
+            color: $white;
+          }
+        }
+      }
     }
   }
 }
