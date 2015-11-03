@@ -4,11 +4,12 @@
       &.title-panel {
         background: $primary-color;
         color: $white;
-        padding: 0 rem-calc(10);
+        padding: rem-calc(10);
         margin-bottom: 0;
         margin-top: rem-calc(8);
         border-top-left-radius: $global-radius;
         border-top-right-radius: $global-radius;
+        font-size: $base-font-size;
       }
     }
   }

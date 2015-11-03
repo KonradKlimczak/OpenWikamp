@@ -6,21 +6,28 @@
     <title>OpenWikamp - Open platform for High Schools</title>
     <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
     <link rel="stylesheet" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <script data-main="/static/app/main.js" src="/static/js/require.js"></script>
     <link rel="stylesheet" href="">
 </head>
 <body>
 <div id="main" ng-controller="frameController">
     <div class="app-bar">
-                    <div class="logo"><b ng-bind="name"></b></div>
-                    <div class="left-section" ng-click="methods.toggleCanvas()">Home</div>
-                    <div class="right-section">
-                        <a href="#" class="user">Current User</a>
-                    </div>
-                </div>
+        <div class="logo" ng-class="{'slide': !offcanvas}" ng-mouseover="methods.toggleCanvas(true)"
+             ng-mouseleave="methods.toggleCanvas(false)">
+            <b><i class="fa fa-bars fa-lg" ng-hide="offcanvas"></i></b>
+            <b><i class="fa fa-arrow-left fa-lg" ng-show="offcanvas"></i></b>
+            <b ng-hide="offcanvas">OW</b>
+            <b ng-show="offcanvas"><span ng-bind="name"></span></b></div>
+        <div class="left-section">Home</div>
+        <div class="right-section">
+            <a href="#" class="user">Current User</a>
+        </div>
+    </div>
     <div class="off-canvas-wrap" ng-class="{'move-right': offcanvas}">
         <div class="inner-wrap">
-            <aside class="left-off-canvas-menu">
+            <aside class="left-off-canvas-menu" ng-mouseover="methods.toggleCanvas(true)"
+                   ng-mouseleave="methods.toggleCanvas(false)">
                 <div class="image">
                     <img src="static/img/avatar.png" alt="avatar">
                     <span>Welcome, User!<br><small>Settings | Logout</small></span>

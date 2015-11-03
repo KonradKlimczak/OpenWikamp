@@ -53,6 +53,20 @@ gulp.task('copy', ['default'], function () {
     ], {
         cwd: 'bower_components/'
     }).pipe(gulp.dest(generated+'scss/vendor/'));
+
+    // copy font awesome
+
+    gulp.src([
+        'components-font-awesome/fonts/*.*'
+    ], {
+        cwd: 'bower_components/'
+    }).pipe(gulp.dest(generated+'fonts/'));
+
+    gulp.src([
+        'components-font-awesome/css/font-awesome.css'
+    ], {
+        cwd: 'bower_components/'
+    }).pipe(gulp.dest(generated+'css/'));
 });
 
 gulp.task('compile-sass', ['copy'], function () {

@@ -5,7 +5,8 @@ $app-bar-font-size: rem-calc(13) !default;
 @mixin section($float, $padding) {
   float: $float;
   padding: rem-calc($padding);
-};
+}
+
 
 @include exports("app-bar") {
   .app-bar {
@@ -17,6 +18,11 @@ $app-bar-font-size: rem-calc(13) !default;
       @include section(left, 10);
       width: rem-calc(250);
       background: darken($primary-color, 10%);
+      overflow: hidden;
+      transition: 0.5s ease;
+      &.slide {
+        width: auto;
+      }
     }
     .left-section {
       @include section(left, 10);

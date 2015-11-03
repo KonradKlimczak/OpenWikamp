@@ -4,9 +4,12 @@
             <div class="row">
                 <div class="small-12 columns">
                     <h4 class="title-panel">News</h4>
-                    <div ng-repeat="post in posts" class="panel">
-                        <h5><b>{{ post.title }}</b></h5>
-                        <p>{{ post.text }}</p>
+                    <div class="panel">
+                        <div ng-repeat="post in posts">
+                            <h5><b>{{ post.title }}</b></h5>
+
+                            <p>{{ post.text }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -15,10 +18,24 @@
             <div class="row">
                 <div class="small-12 columns">
                     <h4 class="title-panel">Welcome User!</h4>
-                    <div class="panel">Your statistic:</div>
+
+                    <div class="panel">
+                        <div class="row">
+                            <div class="small-7 columns">
+                                <h3>User</h3>
+                                <h5>FTIMS</h5>
+
+                                <p>Last login: Yesterday</p>
+                            </div>
+                            <div class="small-5 columns text-right">
+                                <img src="static/img/avatar.png" style="width: 100px; height: 100px;" alt="avatar">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="small-12 columns">
                     <h4 class="title-panel">My Activities</h4>
+
                     <div class="panel">Activities</div>
                 </div>
             </div>
