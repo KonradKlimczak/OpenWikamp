@@ -29,6 +29,17 @@ $app-grid-title-color: $white !default;
           padding: rem-calc(7.5) rem-calc(5);
           &.hover:hover {
             background: $gainsboro;
+            .drop-down {
+              display: block;
+              background: $smoke;
+              position: absolute;
+              margin-left: -(rem-calc(5));
+              margin-right: -(rem-calc(5));
+              top: rem-calc(50);
+            }
+          }
+          .drop-down {
+            display: none;
           }
         }
         .user {

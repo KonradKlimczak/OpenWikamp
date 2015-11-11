@@ -33,7 +33,7 @@ def delete_subject(self):
 
 
 class Schedule(models.Model):
-    subject = models.ForeignKey('Subject')
+    subject = models.ForeignKey('Subject', related_name='schedules')
     teacher = models.ForeignKey('auth.User')
     date = models.DateField()
     from_time = models.DateTimeField()
@@ -50,7 +50,7 @@ def delete_schedule(self):
 
 
 class Lesson(models.Model):
-    subject = models.ForeignKey('Subject')
+    subject = models.ForeignKey('Subject', related_name='lessons')
     title = models.CharField(max_length=200)
     description = models.TextField()
 

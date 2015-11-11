@@ -1,0 +1,35 @@
+<div ng-controller="subjectController">
+    <div class="row">
+        <div class="small-12 columns">
+            <h3>{{ subject.title }}
+                <small>Your subjects</small>
+            </h3>
+        </div>
+        <div class="small-12 columns">
+            <div class="panel">
+                <p>{{ subject.description }}</p>
+                <h5>Schedule</h5>
+                <ul class="no-bullet">
+                    <li ng-repeat="schedule in subject.schedules">
+                        <h6>{{ schedule.teacher.username }}</h6>
+                        <p>
+                            <small>{{ schedule.from_time }} - {{ schedule.to_date }}</small>
+                        </p>
+                        <p>Room: {{ schedule.classroom }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="small-12 columns">
+            <div class="panel">
+                <h5>Lessons</h5>
+                <ul class="no-bullet">
+                    <li ng-repeat="lesson in subject.lessons">
+                        <h6>{{ lesson.title }}</h6>
+                        <p>{{ lesson.description }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

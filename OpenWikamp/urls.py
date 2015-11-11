@@ -9,6 +9,8 @@ urlpatterns = [
     # api restowe
     url(r'^post/$', views.PostList.as_view()),
     url(r'^current/', views.CurrentUser.as_view()),
+    url(r'^subject/$', views.SubjectList.as_view()),
+    url(r'^subject/(?P<pk>[0-9]+)/$', views.SubjectDetail.as_view()),
 
     url(r'^$', RedirectView.as_view(pattern_name='index')),
     url(r'^app/$', IndexView.as_view(template_name='index.html'), name='index'),

@@ -24,6 +24,10 @@
                         <li class="element hover">
                             <a class="user right" href="#">English (EN)
                             <i class="fa fa-caret-down"></i></a>
+                            <ul class="no-bullet drop-down">
+                                <li class="element hover">Polish (PL)</li>
+                                <li class="element hover">English (EN)</li>
+                            </ul>
                         </li>
                         <li class="element hover">
                             <a class="user right" href="#">
@@ -31,6 +35,10 @@
                             <i class="fa fa-user fa-lg"></i>
                         </span><span ng-bind="currentUser.username"></span>
                             <i class="fa fa-caret-down"></i></a>
+                            <ul class="no-bullet drop-down">
+                                <li class="element hover">Your profile</li>
+                                <li class="element hover">Messages</li>
+                            </ul>
                         </li>
                         <li class="element">
                             <a class="ico right" href="/login">
@@ -45,11 +53,11 @@
             </div>
             <div class="app-content row no-margin">
                 <nav class="small-4 medium-2 columns">
-                    <a class="nav-element">
+                    <a class="nav-element" ui-sref="home">
                         <i class="fa fa-home fa-2x"></i>
                         <span>Home</span>
                     </a>
-                    <a class="nav-element">
+                    <a class="nav-element" ui-sref="subjects">
                         <i class="fa fa-book fa-2x"></i>
                         <span>Your subjects</span>
                     </a>

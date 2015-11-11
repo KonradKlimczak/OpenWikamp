@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from OpenWikamp.models import Post
-from OpenWikamp.serializers import PostSerializer, UserSerializer
+from OpenWikamp.serializers import PostSerializer, UserSerializer, SubjectSerializer, SubjectDetailSerializer
 from django.views.generic.base import TemplateView
 from .models import *
 from .forms import *
@@ -57,6 +57,22 @@ class PostList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# class CurrentUser(APIView):
-#     def get(self, request):
-#         serializer =
+class SubjectList(APIView):
+    def get(self, request, format=None):
+        subjects = Subject.objects.all()
+        serializer = SubjectSerializer(subjects, many=True)
+        return Response(serializer.data)
+
+
+class SubjectDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return Subject.objects.get(pk=pk)
+        except Subject.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        subject = self.get_object(pk)
+        serializer = SubjectDetailSerializer(subject)
+        return Response(serializer.data)
+

@@ -2,5 +2,9 @@ define([
     '/static/app/components/home/homeController.js',
     '/static/app/components/home/homeState.js',
     '/static/app/components/frame/frameController.js',
-    '/static/app/components/frame/frameState.js'
+    '/static/app/components/frame/frameState.js',
+    '/static/app/components/subjects/subjectsController.js',
+    '/static/app/components/subjects/subjectsState.js',
+    '/static/app/components/subject/subjectController.js',
+    '/static/app/components/subject/subjectState.js'
 ]);
