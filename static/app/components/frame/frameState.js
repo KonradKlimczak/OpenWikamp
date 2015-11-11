@@ -4,5 +4,6 @@ define([
     controllers.controller('frameState', function($scope) {
         $scope.name = 'OpenWikamp';
         $scope.offcanvas = false;
+        $scope.loading = false;
     })
 });

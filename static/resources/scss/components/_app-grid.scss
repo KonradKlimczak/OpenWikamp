@@ -1,0 +1,92 @@
+$app-grid-title-color: $white !default;
+
+@include exports("app-grid") {
+  .app-grid {
+    .app-bar {
+      height: rem-calc(50);
+      -webkit-box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
+      box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 999;
+      .title {
+        height: 100%;
+        background: $primary-color;
+
+        h1 {
+          font-size: rem-calc(16);
+          margin: 0;
+          color: $app-grid-title-color;
+          line-height: rem-calc(50);
+          white-space: nowrap;
+        }
+      }
+      .app-menu {
+        background: $smoke;
+        color: $monsoon;
+        height: 100%;
+        .element {
+          padding: rem-calc(7.5) rem-calc(5);
+          &.hover:hover {
+            background: $gainsboro;
+          }
+        }
+        .user {
+          line-height: rem-calc(35);
+          white-space: nowrap;
+          span {
+            margin-right: rem-calc(10);
+          }
+        }
+        .ico {
+          width: rem-calc(35);
+          height: rem-calc(35);
+          -webkit-border-radius: 50% !important;
+          -moz-border-radius: 50% !important;
+          border-radius: 50% !important;
+          background: $white;
+          text-align: center;
+          line-height: rem-calc(35);
+          white-space: nowrap;
+          &:hover {
+            -webkit-box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 999;
+          }
+        }
+      }
+    }
+    .app-content {
+      nav {
+        background: $oil;
+        padding: 0;
+        .nav-element {
+          text-align: center;
+          padding: rem-calc(5);
+          color: $smoke;
+          display: block;
+          &:hover {
+            background: $monsoon;
+          }
+          i {
+            display: inherit;
+          }
+          span {
+            font-size: rem-calc(12);
+          }
+        }
+      }
+      .main-section {
+        background: $gainsboro;
+        .loading {
+          text-align: center;
+          color: $monsoon;
+          height: 400px;
+          line-height: 400px;
+        }
+      }
+    }
+  }
+}

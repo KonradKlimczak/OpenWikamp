@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenWikamp - Open platform for High Schools</title>
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <script data-main="/static/app/main.js" src="/static/js/require.js"></script>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<div id="login" ng-controller="frameController">
+    <div id="login-form">
+        <div class="row">
+            <div class="small-12 medium-4 columns small-centered text-center">
+                <i class="fa fa-graduation-cap fa-2x"></i>
+                <h5>OpenWikamp</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 medium-4 columns small-centered panel radius">
+                <div id="login">
+                    <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+                        {% csrf_token %}
+                        {% if next %}
+                            <input type="hidden" name="next" value="{{ next }}"/>
+                        {% endif %}
+                        <label for="username">Username</label>
+                        <input class="radius" type="text" id="username" name="username" placeholder="Username">
+                        <label for="password">Password</label>
+                        <input class="radius" type="password" name="password" id="password" placeholder="Password">
+                        <button type="submit" class="button tiny radius">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

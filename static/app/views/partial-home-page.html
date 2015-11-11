@@ -1,20 +1,25 @@
 <div ng-controller="homeController">
-    <div class="row fluid">
-        <div class="small-6 columns">
+    <div class="row">
+        <div class="small-12 columns">
+            <h3>Dashboard
+                <small>Small information of you</small>
+            </h3>
+        </div>
+        <div class="small-12 medium-6 columns">
             <div class="row">
                 <div class="small-12 columns">
                     <h4 class="title-panel">News</h4>
+
                     <div class="panel">
                         <div ng-repeat="post in posts">
                             <h5><b>{{ post.title }}</b></h5>
-
                             <p>{{ post.text }}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="small-6 columns">
+        <div class="small-12 medium-6 columns">
             <div class="row">
                 <div class="small-12 columns">
                     <h4 class="title-panel">Welcome User!</h4>
@@ -28,7 +33,7 @@
                                 <p>Last login: Yesterday</p>
                             </div>
                             <div class="small-5 columns text-right">
-                                <img src="static/img/avatar.png" style="width: 100px; height: 100px;" alt="avatar">
+                                <img src="/static/img/avatar.png" style="width: 100px; height: 100px;" alt="avatar">
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,13 @@ define([
                 toggleCanvas: toggleCanvas
             };
 
+            $scope.$on('$stateChangeStart', function () {
+                $scope.loading = true;
+            });
+            $scope.$on('$stateChangeSuccess', function () {
+                $scope.loading = false;
+            });
+
             $scope.init = function () {
                 $controller('frameState', {$scope: $scope});
 

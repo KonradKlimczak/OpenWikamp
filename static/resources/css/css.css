@@ -1,3 +1,14 @@
-#main {
+body {
+    color: #EEEEEE;
+}
+
+#login {
+    display: table;
     height: 100%;
+    width: 100%;
+}
+
+#login-form {
+    display: table-cell;
+    vertical-align: middle;
 }
