@@ -5,5 +5,6 @@ define([
         $scope.name = 'OpenWikamp';
         $scope.offcanvas = false;
         $scope.loading = false;
+        $scope.currentUser = {};
     })
 });

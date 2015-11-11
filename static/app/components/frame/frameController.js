@@ -7,6 +7,18 @@ define([
                 $scope.offcanvas = value;
             };
 
+            var loadUser = function() {
+                $http({
+                    method: 'GET',
+                    url: '/current/'
+                })
+                    .then(function successCallback(response) {
+                        $scope.currentUser = response.data;
+                    }, function errorCallback(response) {
+                        console.log(response);
+                    });
+            };
+
             $scope.methods = {
                 toggleCanvas: toggleCanvas
             };
@@ -20,6 +32,7 @@ define([
 
             $scope.init = function () {
                 $controller('frameState', {$scope: $scope});
+                loadUser();
 
                 $scope.currentState = $state.current.name;
 
