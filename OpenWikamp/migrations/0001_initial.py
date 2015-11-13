@@ -15,16 +15,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Activity',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField()),
-                ('path', models.FilePathField()),
             ],
         ),
         migrations.CreateModel(
             name='Lesson',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField()),
             ],
@@ -32,7 +31,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
                 ('text', models.TextField()),
             ],
@@ -40,7 +39,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Schedule',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('date', models.DateField()),
                 ('from_time', models.DateTimeField()),
                 ('to_date', models.DateTimeField()),
@@ -50,7 +49,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Subject',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField()),
                 ('head_teacher', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
@@ -59,7 +58,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='schedule',
             name='subject',
-            field=models.ForeignKey(to='OpenWikamp.Subject'),
+            field=models.ForeignKey(related_name='schedules', to='OpenWikamp.Subject'),
         ),
         migrations.AddField(
             model_name='schedule',
@@ -69,11 +68,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='lesson',
             name='subject',
-            field=models.ForeignKey(to='OpenWikamp.Subject'),
+            field=models.ForeignKey(related_name='lessons', to='OpenWikamp.Subject'),
         ),
         migrations.AddField(
             model_name='activity',
-            name='Lesson',
-            field=models.ForeignKey(to='OpenWikamp.Lesson'),
+            name='lesson',
+            field=models.ForeignKey(related_name='activities', to='OpenWikamp.Lesson'),
         ),
     ]

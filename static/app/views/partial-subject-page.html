@@ -8,7 +8,11 @@
         <div class="small-12 columns">
             <div class="panel">
                 <p>{{ subject.description }}</p>
-                <h5>Schedule</h5>
+            </div>
+        </div>
+        <div class="small-12 columns">
+            <h3 class="title-panel">Schedule</h3>
+            <div class="panel">
                 <ul class="no-bullet">
                     <li ng-repeat="schedule in subject.schedules">
                         <h6>{{ schedule.teacher.username }}</h6>
@@ -21,8 +25,8 @@
             </div>
         </div>
         <div class="small-12 columns">
+            <h4 class="title-panel">Lessons</h4>
             <div class="panel">
-                <h5>Lessons</h5>
                 <ul class="no-bullet">
                     <li ng-repeat="lesson in subject.lessons">
                         <h6>{{ lesson.title }}</h6>

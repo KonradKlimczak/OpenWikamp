@@ -21,10 +21,17 @@ class SubjectSerializer(serializers.Serializer):
     description = serializers.CharField()
 
 
+class ActivitySerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
+    title = serializers.CharField(max_length=200)
+    description = serializers.CharField()
+
+
 class LessonSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     title = serializers.CharField(max_length=200)
     description = serializers.CharField()
+    activities = ActivitySerializer(many=True)
 
 
 class ScheduleSerializer(serializers.Serializer):
