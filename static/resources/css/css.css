@@ -1,5 +1,9 @@
 body {
-    color: #EEEEEE;
+    background: #EEEEEE;
+}
+
+#main {
+    height: 100%;
 }
 
 #login {

@@ -7,7 +7,7 @@ define([
         var loadData = function (subjectId) {
             $http({
                 method: 'GET',
-                url: '/subject/' + subjectId + '/'
+                url: '/api/subject/' + subjectId + '/'
             }).then(function successCallback(response) {
                 $scope.subject = response.data;
             }, function(response) {

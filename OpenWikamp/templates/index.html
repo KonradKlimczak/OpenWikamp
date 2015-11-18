@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="main" ng-controller="frameController">
-    <div class="row max-width">
+    <div class="row max-width full-height">
         <div class="app-grid">
             <div class="app-bar row no-margin">
                 <div class="title small-4 medium-2 columns">
@@ -24,7 +24,7 @@
                     <ul class="inline-list right">
                         <li class="element hover">
                             <a class="user right" href="#">English (EN)
-                            <i class="fa fa-caret-down"></i></a>
+                                <i class="fa fa-caret-down"></i></a>
                             <ul class="no-bullet drop-down">
                                 <li class="element hover">Polish (PL)</li>
                                 <li class="element hover">English (EN)</li>
@@ -32,14 +32,16 @@
                         </li>
                         <li class="element hover">
                             <a class="user right" href="#">
-                            <span class="ico left">
-                            <i class="fa fa-user fa-lg"></i>
-                        </span><span ng-bind="currentUser.username"></span>
-                            <i class="fa fa-caret-down"></i></a>
-                            <ul class="no-bullet drop-down">
-                                <li class="element hover">Your profile</li>
-                                <li class="element hover">Messages</li>
-                            </ul>
+                                <span class="ico left">
+                                    <i class="fa fa-user fa-lg"></i>
+                                </span>
+                                <span ng-bind="currentUser.first_name"></span>
+                                <span ng-bind="currentUser.last_name"></span>
+                                <i class="fa fa-caret-down"></i></a>
+                                <ul class="no-bullet drop-down">
+                                    <li class="element hover">Your profile</li>
+                                    <li class="element hover">Messages</li>
+                                </ul>
                         </li>
                         <li class="element">
                             <a class="ico right" href="/login">

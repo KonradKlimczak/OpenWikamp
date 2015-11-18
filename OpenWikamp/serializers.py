@@ -11,6 +11,7 @@ class PostSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=100)
     email = serializers.EmailField()
+    first_name = serializers.CharField()
     last_name = serializers.CharField()
 
 
@@ -21,10 +22,18 @@ class SubjectSerializer(serializers.Serializer):
     description = serializers.CharField()
 
 
+class ActivityFileSerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
+    title = serializers.CharField(max_length=200)
+    expired = serializers.DateTimeField()
+    file = serializers.FileField()
+
+
 class ActivitySerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     title = serializers.CharField(max_length=200)
     description = serializers.CharField()
+    activity = ActivityFileSerializer()
 
 
 class LessonSerializer(serializers.Serializer):

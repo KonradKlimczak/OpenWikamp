@@ -10,7 +10,7 @@ define([
             var loadUser = function() {
                 $http({
                     method: 'GET',
-                    url: '/current/'
+                    url: '/api/current/'
                 })
                     .then(function successCallback(response) {
                         $scope.currentUser = response.data;
