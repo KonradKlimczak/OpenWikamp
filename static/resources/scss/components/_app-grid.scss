@@ -1,6 +1,30 @@
 $app-grid-title-color: $white !default;
 
+@mixin scrollbars($size, $foreground-color, $background-color) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    border-radius: rem-calc(20);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
 @include exports("app-grid") {
+  @include scrollbars(0.4rem, $primary-color, $smoke);
   .app-grid {
     height: 100%;
     .app-bar {
@@ -97,6 +121,7 @@ $app-grid-title-color: $white !default;
       .main-section {
         height: 100%;
         background: $gainsboro;
+        overflow-y: auto;
         .loading {
           text-align: center;
           color: $monsoon;

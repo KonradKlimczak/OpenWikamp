@@ -2,4 +2,5 @@
 /static/node_modules
 /static/bower_components
 /OpenWikamp/migrations
+/.idea/
 # Created by .ignore support plugin (hsz.mobi)

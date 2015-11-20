@@ -3,6 +3,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/app/">
     <title>OpenWikamp - Open platform for High Schools</title>
     <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
@@ -17,10 +18,10 @@
     <div class="row max-width full-height">
         <div class="app-grid">
             <div class="app-bar row no-margin">
-                <div class="title small-4 medium-2 columns">
+                <div class="title small-4 medium-2 large-1 columns">
                     <h1>OpenWikamp</h1>
                 </div>
-                <div class="app-menu small-8 medium-10 columns">
+                <div class="app-menu small-8 medium-10 large-11 columns">
                     <ul class="inline-list right">
                         <li class="element hover">
                             <a class="user right" href="#">English (EN)
@@ -55,7 +56,7 @@
                 </div>
             </div>
             <div class="app-content row no-margin">
-                <nav class="small-4 medium-2 columns">
+                <nav class="small-12 medium-2 large-1 columns">
                     <a class="nav-element" ui-sref="home">
                         <i class="fa fa-home fa-2x"></i>
                         <span>Home</span>
@@ -69,7 +70,7 @@
                         <span>Email</span>
                     </a>
                 </nav>
-                <div class="main-section small-8 medium-10 columns">
+                <div class="main-section small-12 medium-10 large-11 columns">
                     <div ng-hide="loading" ui-view></div>
                     <div class="loading" ng-show="loading">
                         <i class="fa fa-spin fa-circle-o-notch fa-2x"></i>
