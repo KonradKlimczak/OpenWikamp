@@ -45,6 +45,7 @@ class IndexView(TemplateView):
 class CurrentUser(APIView):
     def get(self, request):
         user = request.user
+        print(user)
         if user.is_active:
             serializer = UserSerializer(request.user)
             return Response(serializer.data)
@@ -57,7 +58,9 @@ def group_permission(group):
             if is_in_group(request.user, group) or request.user.is_superuser:
                 return a_view(request, *args, **kwargs)
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+
         return _wrapped_view
+
     return decorator
 
 
@@ -87,6 +90,16 @@ class SubjectList(APIView):
         serializer = SubjectSerializer(subjects, many=True)
         return Response(serializer.data)
 
+    def put(self, request, format=None):
+        serializer = SubjectDetailSerializer(data=request.data)
+        user = request.user
+        if is_in_group(user, 'Teachers') or user.is_superuser:
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
+
 
 class SubjectDetail(APIView):
     def get_object(self, pk):
@@ -99,3 +112,10 @@ class SubjectDetail(APIView):
         subject = self.get_object(pk)
         serializer = SubjectDetailSerializer(subject)
         return Response(serializer.data)
+
+    def delete(self, request, pk, format=None):
+        user = request.user
+        if is_in_group(user, 'Teachers') or user.is_superuser:
+            subject = self.get_object(pk)
+            subject.delete()
+            return

@@ -1,9 +1,23 @@
 <div ng-controller="subjectController">
     <div class="row">
         <div class="small-12 columns">
-            <h3>{{ subject.title }}
-                <small>Your subjects</small>
-            </h3>
+            <div class="row">
+                <div class="small-8 columns">
+                    <h3>{{ subject.title }}
+                        <small>Your subjects</small>
+                    </h3>
+                </div>
+                <div class="small-4 columns">
+                    <ul class="inline-list">
+                        <li>
+                            <a href="" class="button tiny radius">
+                                <i class="fa fa-plus fa-lg"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
         <div class="small-12 columns">
             <div class="panel">
@@ -12,10 +26,12 @@
         </div>
         <div class="small-12 columns">
             <h3 class="title-panel">Schedule</h3>
+
             <div class="panel">
                 <ul class="no-bullet">
                     <li ng-repeat="schedule in subject.schedules">
                         <h6>{{ schedule.teacher.username }}</h6>
+
                         <p>
                             <small>{{ schedule.from_time }} - {{ schedule.to_date }}</small>
                         </p>
@@ -26,14 +42,25 @@
         </div>
         <div class="small-12 columns">
             <h4 class="title-panel">Lessons</h4>
+
             <div class="panel">
                 <ul class="no-bullet">
                     <li ng-repeat="lesson in subject.lessons">
                         <h4>{{ lesson.title }}</h4>
+
                         <p>{{ lesson.description }}</p>
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="small-12 columns">
+            <h4 class="title-panel">Lessons</h4>
+
+            <div class="panel">
+                <label>Save
+                    <textarea ng-model="sendData"></textarea></label>
+            </div>
+            <a ng-click="methods.saveData()" class="button tiny">Save</a>
         </div>
     </div>
 </div>

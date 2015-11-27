@@ -20,7 +20,7 @@ def __str__(self):
 
 class Subject(models.Model):
     title = models.CharField(max_length=200)
-    head_teacher = models.ForeignKey('auth.User')
+    head_teacher = models.ForeignKey('auth.User', blank=True, null=True)
     description = models.TextField()
 
 

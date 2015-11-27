@@ -122,6 +122,20 @@ $app-grid-title-color: $white !default;
         height: 100%;
         background: $gainsboro;
         overflow-y: auto;
+        .icon-list {
+          margin: 0;
+          li {
+            margin: 0;
+            padding: rem-calc(6);
+            a {
+              margin: 0;
+              padding: rem-calc(10) 0;
+              width: rem-calc(37);
+              height: rem-calc(37);
+              border-radius: 50%;
+            }
+          }
+        }
         .loading {
           text-align: center;
           color: $monsoon;

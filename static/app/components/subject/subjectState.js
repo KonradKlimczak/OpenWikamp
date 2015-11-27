@@ -3,5 +3,6 @@ define([
 ], function (controllers) {
     controllers.controller('subjectState', function($scope) {
         $scope.subject = {};
+        $scope.sendData = {};
     })
 });

@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from OpenWikamp.models import Post
+from OpenWikamp.models import Post, Subject, Schedule, Lesson
+from django.contrib.auth.models import User
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -9,6 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
     username = serializers.CharField(max_length=100)
     email = serializers.EmailField()
     first_name = serializers.CharField()
@@ -60,5 +62,45 @@ class SubjectDetailSerializer(serializers.Serializer):
     schedules = ScheduleSerializer(many=True)
     lessons = LessonSerializer(many=True)
 
+    def create(self, validated_data):
+        subject = Subject.objects.create(
+            title=validated_data['title'],
+            head_teacher=User.objects.get(username=validated_data['head_teacher']['username']),
+            description=validated_data['description']
+        )
+
+        for item in validated_data['schedules']:
+            schedule = Schedule(
+                teacher=User.objects.get(username=item['teacher']['username']),
+                date=item['date'],
+                from_time=item['from_time'],
+                to_date=item['to_date'],
+                classroom=item['classroom'],
+                subject=subject
+            )
+            schedule.save()
+        for item in validated_data['lessons']:
+            lesson = Lesson(
+                title=item['title'],
+                description=item['description'],
+                subject=subject
+            )
+            lesson.save()
+            for one in item['activities']:
+                activity = ActivitySerializer(
+                    title=one['title'],
+                    description=one['description'],
+                    lesson=lesson
+                )
+                activity.save()
+                file = one['activity']
+                activityfile = ActivityFileSerializer(
+                    title=file['title'],
+                    expired=file['expired'],
+                    file=file['file'],
+                    activity=activity
+                )
+                activityfile.save()
+        return subject
 
 

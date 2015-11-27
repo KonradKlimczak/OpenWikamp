@@ -22,7 +22,7 @@ define([
                     controller: 'subjectsController'
                 })
                 .state('subject', {
-                    url: '/subject/{subjectId}/',
+                    url: '/subject/{subjectId}?state={edit}',
                     templateUrl: templatesPath + 'partial-subject-page.html',
                     controller: 'subjectController'
                 })
