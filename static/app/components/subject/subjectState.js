@@ -4,5 +4,6 @@ define([
     controllers.controller('subjectState', function($scope) {
         $scope.subject = {};
         $scope.sendData = {};
+        $scope.editable = false;
     })
 });

@@ -1,8 +1,8 @@
 define([
     '../module.js'
 ], function (controllers) {
-    controllers.controller('frameController', ["$scope", "$http", "$controller", "$state",
-        function ($scope, $http, $controller, $state) {
+    controllers.controller('frameController', ["$scope", "$http", "$controller", "$state", "userService",
+        function ($scope, $http, $controller, $state, userService) {
             var toggleCanvas = function (value) {
                 $scope.offcanvas = value;
             };
@@ -14,6 +14,7 @@ define([
                 })
                     .then(function successCallback(response) {
                         $scope.currentUser = response.data;
+                        userService.setUser(response.data);
                     }, function errorCallback(response) {
                         console.log(response);
                     });

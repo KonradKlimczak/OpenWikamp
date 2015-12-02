@@ -2,6 +2,7 @@ define([
     './module.js'
 ], function (services) {
     services.service('subjectFactory', function () {
+
         this.createSubject = function () {
             return {
                 id: "",

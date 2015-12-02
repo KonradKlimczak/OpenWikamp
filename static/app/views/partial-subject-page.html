@@ -1,17 +1,36 @@
-<div ng-controller="subjectController">
+<div ng-controller="subjectController" ng-init="init()">
     <div class="row">
         <div class="small-12 columns">
             <div class="row">
                 <div class="small-8 columns">
-                    <h3>{{ subject.title }}
-                        <small>Your subjects</small>
+                    <h3 ng-hide="editable">{{ subject.title }}
+                        <small>Detail of {{ subject.title }}</small>
+                    </h3>
+                    <h3 ng-show="editable">{{ subject.title }}
+                        <small>Edit {{ subject.title }}</small>
                     </h3>
                 </div>
                 <div class="small-4 columns">
-                    <ul class="inline-list">
-                        <li>
-                            <a href="" class="button tiny radius">
-                                <i class="fa fa-plus fa-lg"></i>
+                    <ul class="inline-list icon-list right">
+                        <li ng-hide="editable && subject.id">
+                            <a ui-sref="subjects" class="button tiny radius">
+                                <i class="fa fa-arrow-left fa-lg"></i>
+                            </a>
+                        </li>
+                        <li ng-show="editable && subject.id">
+                            <a ng-click="methods.editModeDisable()" class="button tiny radius">
+                                <i class="fa fa-arrow-left fa-lg"></i>
+                            </a>
+                        </li>
+
+                        <li ng-hide="editable">
+                            <a ng-click="methods.editMode()" class="button tiny radius">
+                                <i class="fa fa-pencil fa-lg"></i>
+                            </a>
+                        </li>
+                        <li ng-show="editable">
+                            <a ng-click="methods.saveData()" class="button tiny radius">
+                                <i class="fa fa-save fa-lg"></i>
                             </a>
                         </li>
                     </ul>
@@ -21,23 +40,53 @@
         </div>
         <div class="small-12 columns">
             <div class="panel">
-                <p>{{ subject.description }}</p>
+                <p ng-hide="editable">{{ subject.description }}</p>
+
+                <div ng-show="editable">
+                    <label>Title
+                        <input type="text" ng-model="editData.title">
+                    </label>
+                    <label>Description
+                        <textarea name="description" id="desc" cols="30" rows="10"
+                                  ng-model="editData.description"></textarea>
+                    </label>
+                </div>
             </div>
         </div>
         <div class="small-12 columns">
             <h3 class="title-panel">Schedule</h3>
 
             <div class="panel">
-                <ul class="no-bullet">
-                    <li ng-repeat="schedule in subject.schedules">
-                        <h6>{{ schedule.teacher.username }}</h6>
-
-                        <p>
-                            <small>{{ schedule.from_time }} - {{ schedule.to_date }}</small>
-                        </p>
-                        <p>Room: {{ schedule.classroom }}</p>
-                    </li>
-                </ul>
+                <table class="small-12">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Classroom</th>
+                            <th ng-show="editable">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="schedule in subject.schedules">
+                            <td>{{ schedule.teacher.username }}</td>
+                            <td>{{ schedule.from_time }}</td>
+                            <td>{{ schedule.to_date }}</td>
+                            <td>{{ schedule.classroom }}</td>
+                            <td class="text-center" ng-show="editable">
+                                <a>
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a>
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="button tiny round" ng-show="editable">
+                    <i class="fa fa-plus"></i> Add new schedule
+                </a>
             </div>
         </div>
         <div class="small-12 columns">
@@ -52,15 +101,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="small-12 columns">
-            <h4 class="title-panel">Lessons</h4>
-
-            <div class="panel">
-                <label>Save
-                    <textarea ng-model="sendData"></textarea></label>
-            </div>
-            <a ng-click="methods.saveData()" class="button tiny">Save</a>
         </div>
     </div>
 </div>
