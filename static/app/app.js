@@ -8,7 +8,7 @@ define([
     'use strict';
 
     return ng.module('app', [
-        //'app.services',
+        'app.services',
         //'app.directives',
         'app.controllers',
         'ui.router'

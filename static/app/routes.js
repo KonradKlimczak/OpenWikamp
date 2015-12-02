@@ -3,11 +3,14 @@ define([
 ], function (app) {
     'use strict';
 
-    return app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider",
-        function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    return app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", "$httpProvider",
+        function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
             var templatesPath = '/static/app/views/';
 
             $urlRouterProvider.otherwise('/');
+
+            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
             $locationProvider.html5Mode(true);
             $stateProvider
@@ -17,12 +20,12 @@ define([
                     controller: 'homeController'
                 })
                 .state('subjects', {
-                    url: '/subject/',
+                    url: '/subject/list',
                     templateUrl: templatesPath + 'partial-subjects-page.html',
                     controller: 'subjectsController'
                 })
                 .state('subject', {
-                    url: '/subject/{subjectId}?state={edit}',
+                    url: '/subject/{subjectId}?state',
                     templateUrl: templatesPath + 'partial-subject-page.html',
                     controller: 'subjectController'
                 })
