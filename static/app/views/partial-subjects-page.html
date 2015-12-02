@@ -10,7 +10,7 @@
                 <div class="small-4 columns">
                     <ul class="inline-list icon-list right">
                         <li>
-                            <a href="" class="button tiny radius">
+                            <a ui-sref="subject" class="button tiny radius">
                                 <i class="fa fa-plus fa-lg"></i>
                             </a>
                         </li>
@@ -29,6 +29,14 @@
                     <h5>
                         <small>Headteacher: {{ subject.head_teacher.username }}</small>
                     </h5>
+                    <div>
+                        <a ng-click="methods.deleteSubject(subject.id)" class="button tiny radius alert">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                        <a ui-sref="subject({subjectId: subject.id, state: 'edit'})" class="button tiny radius success">
+                            <i class="fa fa-edit fa-lg"></i>
+                        </a>
+                    </div>
                     <p>{{ subject.description }}</p>
                 </div>
             </div>
