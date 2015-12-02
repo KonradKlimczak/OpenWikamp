@@ -118,4 +118,4 @@ class SubjectDetail(APIView):
         if is_in_group(user, 'Teachers') or user.is_superuser:
             subject = self.get_object(pk)
             subject.delete()
-            return
+            return Response(status=status.HTTP_204_NO_CONTENT)
