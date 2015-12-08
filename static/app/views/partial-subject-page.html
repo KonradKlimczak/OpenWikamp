@@ -59,32 +59,38 @@
             <div class="panel">
                 <table class="small-12">
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Classroom</th>
-                            <th ng-show="editable">Action</th>
-                        </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Classroom</th>
+                        <th ng-show="editable">Action</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="schedule in subject.schedules">
-                            <td>{{ schedule.teacher.username }}</td>
-                            <td>{{ schedule.from_time }}</td>
-                            <td>{{ schedule.to_date }}</td>
-                            <td>{{ schedule.classroom }}</td>
-                            <td class="text-center" ng-show="editable">
-                                <a>
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <a>
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                    <tr ng-repeat="schedule in subject.schedules" ng-hide="editable">
+                        <td>{{ schedule.teacher.username }}</td>
+                        <td>{{ schedule.from_time }}</td>
+                        <td>{{ schedule.to_date }}</td>
+                        <td>{{ schedule.classroom }}</td>
+                    </tr>
+                    <tr ng-repeat="schedule in editData.schedules" ng-show="editable">
+                        <td>{{ schedule.teacher.username }}</td>
+                        <td>{{ schedule.from_time }}</td>
+                        <td>{{ schedule.to_date }}</td>
+                        <td>{{ schedule.classroom }}</td>
+                        <td class="text-center">
+                            <a ng-click="methods.toggleModal('schedule', $index)">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a>
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-                <a class="button tiny round" ng-show="editable">
+                <a class="button tiny round" ng-show="editable" ng-click="methods.toggleModal('schedule')">
                     <i class="fa fa-plus"></i> Add new schedule
                 </a>
             </div>
@@ -94,12 +100,68 @@
 
             <div class="panel">
                 <ul class="no-bullet">
-                    <li ng-repeat="lesson in subject.lessons">
+                    <li ng-repeat="lesson in subject.lessons" ng-hide="editable">
                         <h4>{{ lesson.title }}</h4>
 
                         <p>{{ lesson.description }}</p>
                     </li>
+                    <li ng-repeat="lesson in editData.lessons" ng-show="editable">
+                        <h4>{{ lesson.title }}</h4>
+                        <a ng-click="methods.toggleModal('lesson', $index)">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a>
+                            <i class="fa fa-trash"></i>
+                        </a>
+
+                        <p>{{ lesson.description }}</p>
+                    </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="reveal-modal-bg" ng-class="{'open-modal-bg': toggle}" ng-click="methods.toggleModal()"></div>
+    <div id="myModal" class="reveal-modal" style="position: fixed;" ng-class="{'open-modal': toggle}" data-reveal
+         aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+        <h2 id="modalTitle">Awesome. I have it.</h2>
+
+        <div ng-if="modalType == 'schedule'">
+            <div class="row">
+                <div class="small-12 medium-6 columns">
+                    <label>From
+                        <input type="text" ng-model="currentSchedule.from_time">
+                    </label>
+                    <label>To
+                        <input type="text" ng-model="currentSchedule.to_date">
+                    </label>
+                    <label>classroom
+                        <input type="text" ng-model="currentSchedule.classroom">
+                    </label>
+                </div>
+                <div class="small-12 medium-6 columns"></div>
+                <div class="small-12 columns">
+                    <a ng-click="methods.saveFeature(currentScheduleId, currentSchedule, editData.schedules)" class="button tiny">
+                        <i class="fa fa-save"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div ng-if="modalType == 'lesson'">
+            <div class="row">
+                <div class="small-12 medium-6 columns">
+                    <label>From
+                        <input type="text" ng-model="currentLesson.title">
+                    </label>
+                    <label>To
+                        <input type="text" ng-model="currentLesson.description">
+                    </label>
+                </div>
+                <div class="small-12 medium-6 columns"></div>
+                <div class="small-12 columns">
+                    <a ng-click="methods.saveFeature(currentLessonId, currentLesson, editData.lessons)" class="button tiny">
+                        <i class="fa fa-save"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

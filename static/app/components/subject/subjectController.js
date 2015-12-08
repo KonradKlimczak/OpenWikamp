@@ -76,10 +76,47 @@ define([
                 );
             };
 
+            var toggleModal = function (type, id) {
+                if (type == 'schedule') {
+                    $scope.modalType = type;
+                    if (!!id || id == 0) {
+                        $scope.currentSchedule = angular.copy($scope.editData.schedules[id]);
+                        $scope.currentScheduleId = id;
+                    } else {
+                        $scope.currentSchedule = subjectFactory.createSchedule();
+                        $scope.currentScheduleId = undefined;
+                        $scope.currentSchedule.teacher = userService.getUser();
+                    }
+
+                } else if (type == 'lesson') {
+                    $scope.modalType = type;
+                    if (!!id || id == 0) {
+                        $scope.currentLesson = angular.copy($scope.editData.lessons[id]);
+                        $scope.currentLessonId = id;
+                    } else {
+                        $scope.currentLesson = subjectFactory.createLesson();
+                        $scope.currentLessonId = undefined;
+                    }
+                }
+                $scope.toggle = !$scope.toggle;
+                console.log($scope.currentSchedule);
+            };
+
+            var saveFeature = function (id, currentFeature, featuresList) {
+                if (id || id == 0) {
+                    featuresList[id] = angular.copy(currentFeature);
+                } else {
+                    featuresList.push(currentFeature);
+                }
+                toggleModal();
+            };
+
             $scope.methods = {
                 saveData: saveData,
                 editMode: editMode,
-                editModeDisable: editModeDisable
+                editModeDisable: editModeDisable,
+                toggleModal: toggleModal,
+                saveFeature: saveFeature
             };
 
             $scope.init = function () {

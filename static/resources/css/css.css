@@ -16,3 +16,13 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
+
+.open-modal {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.open-modal-bg {
+    display: block;
+}
