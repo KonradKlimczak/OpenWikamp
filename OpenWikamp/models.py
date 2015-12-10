@@ -63,23 +63,41 @@ def delete_lesson(self):
     self.delete()
 
 
-class Activity(models.Model):
-    lesson = models.ForeignKey('Lesson', related_name='activities')
-    title = models.CharField(max_length=200)
-    description = models.TextField()
+# class Activity(models.Model):
+#     lesson = models.ForeignKey('Lesson', related_name='activities')
+#     title = models.CharField(max_length=200)
+#     description = models.TextField()
+#
+#
+# def publish_activity(self):
+#     self.save()
+#
+#
+# def delete_activity(self):
+#     self.delete()
 
-def publish_activity(self):
-    self.save()
+#
+# class ActivityFile(models.Model):
+#     lesson = models.OneToOneField('Activity', related_name='activity')
+#     title = models.CharField(max_length=200)
+#     expired = models.DateTimeField()
+#     file = models.FileField()
+#
+#
+# def publish_activity_file(self):
+#     self.save()
+#
+#
+# def delete_activity_file(self):
+#     self.delete()
 
-def delete_activity(self):
-    self.delete()
-
-
+# class ActivityTask(models.Model):
+#     activity = models.ForeignKey('Activity')
+#     title
 class ActivityFile(models.Model):
-    lesson = models.OneToOneField('Activity', related_name='activity')
-    title = models.CharField(max_length=200)
-    expired = models.DateTimeField()
-    file = models.FileField()
+    lesson = models.ForeignKey('Lesson', related_name='files')
+    name = models.CharField(max_length=200)
+    url = models.FileField(upload_to='uploads/')
 
 
 def publish_activity_file(self):
@@ -89,6 +107,32 @@ def publish_activity_file(self):
 def delete_activity_file(self):
     self.delete()
 
-# class ActivityTask(models.Model):
-#     activity = models.ForeignKey('Activity')
-#     title
+
+class ActivityFileForm(models.Model):
+    lesson = models.ForeignKey('Lesson', related_name='fileForms')
+    name = models.CharField(max_length=200)
+    url = models.FileField()
+    expired = models.DateTimeField()
+
+
+def publish_activity_file_form(self):
+    self.save()
+
+
+def delete_activity_file_form(self):
+    self.delete()
+
+
+class ActivityExam(models.Model):
+    lesson = models.ForeignKey('Lesson', related_name='exams')
+    name = models.CharField(max_length=200)
+    open = models.DateTimeField()
+    expired = models.DateTimeField()
+
+
+def publish_activity_exam(self):
+    self.save()
+
+
+def delete_activity_exam(self):
+    self.delete()

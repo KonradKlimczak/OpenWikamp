@@ -104,6 +104,11 @@
                         <h4>{{ lesson.title }}</h4>
 
                         <p>{{ lesson.description }}</p>
+                        <ul class="no-bullet">
+                            <li ng-repeat="file in lesson.files">
+                                <a ng-href=".{{file.url}}">{{ file.name }}</a>
+                            </li>
+                        </ul>
                     </li>
                     <li ng-repeat="lesson in editData.lessons" ng-show="editable">
                         <h4>{{ lesson.title }}</h4>
@@ -115,6 +120,11 @@
                         </a>
 
                         <p>{{ lesson.description }}</p>
+                        <ul class="no-bullet">
+                            <li ng-repeat="file in lesson.files">
+                                <a ng-href=".{{file.url}}">{{ file.name }}</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

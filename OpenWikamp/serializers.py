@@ -26,23 +26,31 @@ class SubjectSerializer(serializers.Serializer):
 
 class ActivityFileSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
-    title = serializers.CharField(max_length=200)
-    expired = serializers.DateTimeField()
-    file = serializers.FileField()
+    name = serializers.CharField(max_length=200)
+    url = serializers.FileField()
 
 
-class ActivitySerializer(serializers.Serializer):
+class ActivityFileFormSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
-    title = serializers.CharField(max_length=200)
-    description = serializers.CharField()
-    activity = ActivityFileSerializer()
+    name = serializers.CharField(max_length=200)
+    url = serializers.CharField()
+    expired = serializers.DateTimeField()
+
+
+class ActivityExamSerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
+    name = serializers.CharField(max_length=200)
+    open = serializers.DateTimeField()
+    expired = serializers.DateTimeField()
 
 
 class LessonSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     title = serializers.CharField(max_length=200)
     description = serializers.CharField()
-    activities = ActivitySerializer(many=True)
+    files = ActivityFileSerializer(many=True)
+    fileForms = ActivityFileFormSerializer(many=True)
+    exams = ActivityExamSerializer(many=True)
 
 
 class ScheduleSerializer(serializers.Serializer):
